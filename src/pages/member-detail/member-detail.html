@@ -1,0 +1,39 @@
+<!--
+  Generated template for the MemberDetailPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>memberDetail</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+  <div class="bgbox" [ngStyle]="{'background-image': bgSet}">
+    <span class="avatar">
+      <span>{{memberQuote.oname}}</span>
+      <img [src]="memberQuote.avatar">
+    </span>
+  </div>
+  <div class="chart">
+      <ngx-charts-advanced-pie-chart *ngIf="memberQuote"
+      [scheme]="colorScheme"
+      [results]="memberQuote.skill"
+      [gradient]="gradient"
+      (select)="onSelect($event)">
+    </ngx-charts-advanced-pie-chart>
+  </div>
+    <div class="suisuinian">
+      <span>心情</span>
+    </div>
+    <div class="state">
+     <p *ngFor="let state of memberQuote.state">{{state.content}} @{{state.date | date:' HH:mm MM/dd'}}</p>
+    </div>
+    <div class="dummy"></div>
+    <button class="send" ion-button full>发送消息</button>
+</ion-content>
